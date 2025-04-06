@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Change /details/?id=X to details/index.php?id=X
+RewriteRule ^details/?$ details/index.php [QSA,L]
+
+# Change /index/ to index.php
+RewriteRule ^index/?$ index.php [QSA,L]

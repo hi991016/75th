@@ -1,0 +1,9 @@
+Dear Fukuda-san,
+I forgot that tomorrow (Mon 04/07) is a holiday in my country.
+I will do it normally on 08/04.
+I have created the footer and Related Articles components.
+Since you shared your wish to create articles manually, I have coded it dynamically.
+There will be a file called data.php that will be the place to store the articles, you can check it.
+The content of the article will be in a folder "/content/"
+Please help me check it. If you need an explanation or want to change it to another way, please let me know.
+Thank you!!
