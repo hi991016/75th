@@ -1,9 +1,5 @@
 Dear Fukuda-san,
-I forgot that tomorrow (Mon 04/07) is a holiday in my country.
-I will do it normally on 08/04.
-I have created the footer and Related Articles components.
-Since you shared your wish to create articles manually, I have coded it dynamically.
-There will be a file called data.php that will be the place to store the articles, you can check it.
-The content of the article will be in a folder "/content/"
-Please help me check it. If you need an explanation or want to change it to another way, please let me know.
+I have updated it.
+Regarding the separate management of the related articles list, I have added a value called 'related_articles' in the "data.php" file. If you want to display the desired articles, you just need to add the IDs of the articles. What do you think?
+Please help me check it.
 Thank you!!

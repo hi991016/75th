@@ -1,11 +1,13 @@
     <?php
         require_once '../data.php';
         $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-        // get related articles
-        $related_articles = [];
-        foreach ($posts as $post_id => $post) {
-            if ($post_id != $id) {
-                $related_articles[$post_id] = $post;
+        if (isset($posts[$id])) {
+            $related_ids = $posts[$id]['related_articles'] ?? [];
+        }
+        // Get list of related posts based on related_ids
+        foreach ($related_ids as $related_id) {
+            if (isset($posts[$related_id])) {
+                $related_articles[$related_id] = $posts[$related_id];
             }
         }
     ?>

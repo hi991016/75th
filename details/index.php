@@ -7,25 +7,32 @@
         $title_articles = $posts[$id]['title'];
         $date_articles = $posts[$id]['date'];
         $content_file = $posts[$id]['content_file'];
+        $related_ids = $posts[$id]['related_articles'] ?? [];
+
         if (file_exists("../$content_file")) {
             $content = file_get_contents("../$content_file");
         } else {
             $content = 'No content found.';
         }
     } else {
+        $thumb_articles = '';
         $title_articles = 'No posts found';
+        $date_articles = 'No date found';
         $content = 'The article does not exist.';
     }
 
-    // Lấy danh sách bài viết liên quan
+    // Get list of related posts based on related_ids
     $related_articles = [];
-    foreach ($posts as $post_id => $post) {
-        if ($post_id != $id) {
-            $related_articles[$post_id] = $post;
+    foreach ($related_ids as $related_id) {
+        if (isset($posts[$related_id])) {
+            $related_articles[$related_id] = $posts[$related_id];
         }
     }
 ?>
-<?php $title_page = $title_articles; ?>
+<?php 
+    $title_page = $title_articles; 
+    $ogimg_page = $thumb_articles;
+?>
 
 <?php include('../components/header.php') ?>
 
@@ -46,6 +53,7 @@
                         </figure>
                         <div class="detail_content">
                             <?php echo $content; ?>
+                        </div>
                     </div>
                     <div class="detail_controls">
                         <a href="/75th/#list">記事一覧に戻る</a>

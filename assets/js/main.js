@@ -369,7 +369,11 @@ function handleHash() {
           duration: 1,
           scrollTo: { y: target, offsetY: 0 },
           onComplete: () => {
-            window.history.replaceState(null, document.title, window.location.pathname + window.location.search);
+            window.history.replaceState(
+              null,
+              document.title,
+              window.location.pathname + window.location.search
+            );
             gsap.to(
               "[data-logo-shrink], [data-header-logo], [data-scrolldown]",
               {
@@ -378,7 +382,7 @@ function handleHash() {
             );
             setTimeout(() => {
               document.body.classList.remove("fadeout");
-            }, 100);
+            }, 200);
           },
         });
       }
@@ -387,7 +391,11 @@ function handleHash() {
     document.body.classList.remove("fadeout");
   }
 }
-window.addEventListener("load", handleHash);
+["pageshow", "load"].forEach(function (evt) {
+  window.addEventListener(evt, function () {
+    handleHash();
+  });
+});
 
 // ===== details page =====
 if (document.getElementById("detailspage")) {

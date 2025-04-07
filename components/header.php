@@ -2,6 +2,29 @@
 <html lang="ja">
 
 <head>
+    <?php
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+        $domain = $_SERVER['HTTP_HOST']; // localhost, yourdomain.com
+        $request_uri = $_SERVER['REQUEST_URI']; // /75th/details/?id=1
+        $full_url = $protocol . $domain . $request_uri; 
+        $base_url = $protocol . $domain;
+
+		$titlePage = 'Chacott 75th Anniversary';
+		if(isset($title_page)){
+			$titlePage = strip_tags($title_page). ' ｜ ' . $titlePage;
+            $descPage = $titlePage;
+		} else {
+			$titlePage = 'Life is a Show. ｜ ' . $titlePage;
+            $descPage = "舞台はいま、ステージからライフへ。75年⽬のチャコット、いよいよ幕開けです。";
+        }
+
+		if(isset($ogimg_page)){
+			$ogimgPage = $base_url . strip_tags($ogimg_page);
+		} else {
+			$ogimgPage = "https://www.chacott-jp.com/75th/assets/img/ogp.jpg";
+        }
+	?>
+
     <!-- @meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,19 +36,19 @@
     <meta property="og:locale" content="ja_JP">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="チャコット株式会社">
-    <meta property="og:title" content="Life is a Show. ｜ Chacott 75th Anniversary">
-    <meta property="og:description" content="舞台はいま、ステージからライフへ。75年⽬のチャコット、いよいよ幕開けです。">
-    <meta property="og:image" content="https://www.chacott-jp.com/75th/">
-    <meta property="og:url" content="https://www.chacott-jp.com/75th/assets/img/ogp.jpg">
+    <meta property="og:title" content="<?php echo $titlePage ?>">
+    <meta property="og:description" content="<?php echo $descPage ?>">
+    <meta property="og:image" content="<?php echo $ogimgPage ?>">
+    <meta property="og:url" content="<?php echo $full_url ?>">
 
     <!-- @meta twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:site" content="チャコット株式会社">
-    <meta property="twitter:title" content="Life is a Show. ｜ Chacott 75th Anniversary">
-    <meta property="twitter:description" content="舞台はいま、ステージからライフへ。75年⽬のチャコット、いよいよ幕開けです。">
-    <meta property="twitter:image" content="https://www.chacott-jp.com/75th/assets/img/ogp.jpg">
+    <meta property="twitter:title" content="<?php echo $titlePage ?>">
+    <meta property="twitter:description" content="<?php echo $descPage ?>">
+    <meta property="twitter:image" content="<?php echo $ogimgPage ?>">
 
-    <link rel="canonical" href="https://www.chacott-jp.com/75th/">
+    <link rel="canonical" href="<?php echo $full_url ?>">
     <link rel="icon" href="/favicon.ico">
 
     <!-- @master css -->
@@ -43,15 +66,6 @@
         })(document);
     </script>
 
-    <?php
-		$titlePage = 'Chacott 75th Anniversary';
-		$url = $_SERVER['REQUEST_URI'];
-		if(isset($title_page)){
-			$titlePage = strip_tags($title_page). ' ｜ ' . $titlePage;
-		} else {
-			$titlePage = 'Life is a Show. ｜ ' . $titlePage;
-        }
-	?>
 	<title><?php echo $titlePage ?></title>
 </head>
 
