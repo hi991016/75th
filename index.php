@@ -1,4 +1,4 @@
-<?php include('./components/header.php') ?>
+<?php require __DIR__ . '/components/header.php' ?>
     
     <!-- @main -->
     <main class="homepage" id="homepage">
@@ -242,7 +242,7 @@
                     <div class="anni_articles c-articles">
                         <h2>Anniversary Contents</h2>
                         <div class="c-articles_list">
-                            <?php require_once 'data.php'; ?>
+                            <?php require_once __DIR__ . '/data.php'; ?>
                             <?php foreach ($posts as $id => $post): ?>
                                 <a href="/75th/details/?id=<?php echo $id; ?>" class="c-articles_items" data-fadein>
                                     <figure>
@@ -257,7 +257,7 @@
                     </div>
                 </div>
                 <div data-fadein>
-                    <?php include('./components/footer.php') ?>
+                    <?php require __DIR__ . '/components/footer.php' ?>
                 </div>
             </div>
         </section>
@@ -265,4 +265,4 @@
     </main>
     <!-- @@main -->
 
-<?php include('./components/endtag.php') ?>
+<?php require __DIR__ . '/components/endtag.php' ?>
